@@ -32,3 +32,22 @@ export const REGISTER = (signUpDetails) => async(dispatch) => {
         dispatch(set_register_error(err.response.data.msg))
     }
 };
+
+export const CHECK_LOGGED_IN = () => async(dispatch) => {
+    try{
+        console.log("Checking if User already present!");
+        const token = localStorage.getItem("token");
+        if (token){
+            const valid = await api.isValid(token);
+            if (valid.data){
+                console.log("WE HERE!");
+                const user = await api.getUser(token);
+                dispatch(login({token,user:user.data}));
+                console.log("DONE!");
+            }
+        }
+    }
+    catch(err){
+        console.log(err);
+    }
+};
