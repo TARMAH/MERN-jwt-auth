@@ -10,3 +10,6 @@ export const set_login_error = (error) => ({
     payload: error,
   });
   
+export const logout = () => ({
+    type: ActionTypes.LOGOUT
+  });

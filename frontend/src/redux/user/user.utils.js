@@ -1,5 +1,5 @@
 import * as api from '../api/index';
-import {login , set_login_error} from './user.actions';
+import {login , set_login_error ,logout} from './user.actions';
   
 export const LOG_IN = (loginDetails) => async(dispatch) => {
         try{
@@ -12,3 +12,8 @@ export const LOG_IN = (loginDetails) => async(dispatch) => {
             dispatch(set_login_error(err.response.data.msg));
         }
     };
+
+export const LOG_OUT = () => async(dispatch) => {
+       console.log("logging out");
+       dispatch(logout());
+};
