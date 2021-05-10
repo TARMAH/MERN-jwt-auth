@@ -1,5 +1,5 @@
 import * as api from '../api/index';
-import {login , set_login_error ,logout} from './user.actions';
+import {login , set_login_error ,logout , set_register_error} from './user.actions';
   
 export const LOG_IN = (loginDetails) => async(dispatch) => {
         try{
@@ -20,4 +20,15 @@ export const LOG_OUT = () => async(dispatch) => {
        dispatch(logout());
        localStorage.setItem("token", "");
        localStorage.setItem("user", "");
+};
+
+export const REGISTER = (signUpDetails) => async(dispatch) => {
+    try{
+        console.log("Registering User");
+        await api.signUp(signUpDetails);
+        dispatch(set_register_error("User Registered! Please Login with your credentials!"))
+    }
+    catch(err){
+        dispatch(set_register_error(err.response.data.msg))
+    }
 };

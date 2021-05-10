@@ -2,7 +2,8 @@ import ActionTypes from "./user.types";
 
 const INITIAL_STATE = {
   userDetails: {user:null,token:null},
-  loginError : null
+  loginError : null,
+  serverError: null
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -22,6 +23,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
           ...state,
           userDetails: {user:null,token:null},
       };
+    case ActionTypes.SET_REGISTER_ERROR:
+        return {
+          ...state,
+          serverError: action.payload ,
+      };
+      
     default:
       return state;
   }

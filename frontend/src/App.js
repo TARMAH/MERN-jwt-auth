@@ -6,6 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Header from './components/Header/Header';
+import Register from './components/Register/Register';
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          {/* <Route path="/register" component={Register} /> */}
+          <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
         </Switch>
     </div>
