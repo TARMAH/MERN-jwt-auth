@@ -1,20 +1,25 @@
 import './App.css';
-import { useEffect } from 'react';
-import { useSelector } from "react-redux";
-import { selectUserDetails } from "../src/redux/user/user.selector";
+// import { useEffect } from 'react';
+// import { useSelector } from "react-redux";
+// import { selectUserDetails } from "../src/redux/user/user.selector";
+import { Switch, Route } from 'react-router-dom';
+import Home from './components/Home/Home';
+import Login from './components/Login/Login';
 
 function App() {
 
-  const user = useSelector(selectUserDetails);
-  useEffect(() => {
-    console.log("user => "+user.displayName);
-  }, []);
+  // const user = useSelector(selectUserDetails);
+  // useEffect(() => {
+  //   console.log("user => "+user.displayName);
+  // }, []);
 
   return (
     <div className="App">
-      <header className="App-header">
-          Learn React
-      </header>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          {/* <Route path="/register" component={Register} /> */}
+          <Route path="/login" component={Login} />
+        </Switch>
     </div>
   );
 }

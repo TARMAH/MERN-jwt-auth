@@ -1,9 +1,8 @@
 import ActionTypes from "./user.types";
 
-import { login } from "./user.utils.js";
-
 const INITIAL_STATE = {
-  userDetails: {displayName:'',token:''}
+  userDetails: {user:null,token:null},
+  loginError : null
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -11,7 +10,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case ActionTypes.LOGIN:
       return {
         ...state,
-        userDetails: login(action.payload),
+        userDetails: action.payload ,
+      };
+    case ActionTypes.SET_LOGIN_ERROR:
+        return {
+          ...state,
+          loginError: action.payload ,
       };
     default:
       return state;
