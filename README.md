@@ -1,0 +1,1 @@
+#### This is a simple full stack MERN app to replicate the process of user authentication in a web app using jwt-auth in node
